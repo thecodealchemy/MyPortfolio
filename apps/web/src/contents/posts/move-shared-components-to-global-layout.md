@@ -58,7 +58,7 @@ const About = () => {
           className={`about ${pathname === '/' ? 'active' : ''}`}
           data-page="about"
         >
-          <Header title="About Hugo 👨🏻‍💻" />
+          <Header title="About me 👨🏻‍💻" />
           <AboutText />
           <GitHubStats />
           <TechStack />
@@ -78,7 +78,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     initializeCustomSelect(filterItemsByCategory);
-    document.title = "Portfolio - Hugo ChunHo Lin (1chooo) | Open Source Enthusiast";
+    document.title = "Portfolio - TheCodeAlchemy | Open Source Enthusiast";
   }, []);
 
   return (
@@ -90,7 +90,7 @@ const Portfolio = () => {
           className={`portfolio ${pathname === '/portfolio' ? 'active' : ''}`}
           data-page="portfolio"
         >
-          <Header title="Hugo's Portfolio" />
+          <Header title="Aditya's Portfolio" />
           <Projects />
         </article>
       </div>
@@ -123,7 +123,7 @@ const PageContent: React.FC<{
   const isRootPage = pathName === '/' && page === 'about';
 
   if (isRootPage) {
-    documentTitle = "Hugo ChunHo Lin (1chooo) | Open Source Enthusiast";
+    documentTitle = "TheCodeAlchemy | Open Source Enthusiast";
   }
 
   useEffect(() => {

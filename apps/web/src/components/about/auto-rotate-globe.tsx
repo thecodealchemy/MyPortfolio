@@ -52,7 +52,7 @@ function AutoRotatingGlobe() {
       baseColor: [0.8, 0.8, 0.8],
       markerColor: [1, 0.85, 0.42],
       glowColor: [0.5, 0.5, 0.5],
-      markers: [{ location: [25.105497, 121.597366], size: 0.1 }],
+      markers: [{ location: [17.385044, 78.486671], size: 0.1 }],
       scale: 1.05,
       onRender: (state) => {
         if (!pointerInteracting.current) {
@@ -76,7 +76,7 @@ function AutoRotatingGlobe() {
     <div className='absolute inset-x-0 bottom-[-190px] mx-auto aspect-square h-[388px] [@media(max-width:420px)]:bottom-[-140px] [@media(max-width:420px)]:h-[320px] [@media(min-width:768px)_and_(max-width:858px)]:h-[380px]'>
       <div className='flex items-center gap-2 text-white-2 mt-4 ml-4'>
         <LuMapPin size={24} />
-        <h2 className='text-sm font-light'>Taipei, Taiwan (UTC +08:00)</h2>
+        <h2 className='text-sm font-light'>Hyderabad, India (UTC +05:30)</h2>
       </div>
       <div
         style={{

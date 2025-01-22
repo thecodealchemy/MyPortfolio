@@ -24,32 +24,25 @@ import {
 
 const config: Config = {
   avatar: '/images/profile.webp',
-  title: "Chun-Ho (Hugo) Lin - 1chooo | Open Source Enthusiast",
-  description: "I'm Chun-Ho (Hugo) Lin, a graduate with a Bachelor's degree from National Central University (NCU) 🐿️, driven by a sincere passion for Software Engineering 💻.",
-  author: "Chun-Ho (Hugo) Lin - 1chooo",
+  title: "Aditya Kumar Singh - theCodeAlchemy | Software Engineer",
+  description: "I'm Aditya Kumar Singh, a B-Tech graduate in Mechanical Engineering from IIT Hyderabad, passionate about software development.",
+  author: "Aditya Kumar Singh - theCodeAlchemy",
   keywords: [
-    "Hugo ChunHo Lin",
-    "1chooo",
+    "Aditya Kumar Singh",
+    "theCodeAlchemy",
     "Software Engineering",
     "Next.js",
     "React",
   ],
-  status: "Day ONE ⚡️",
-  siteURL: "https://www.1chooo.com",
+  status: "⚡️sudo rm -rf /*",
+  siteURL: "https://code-alchemy.netlify.app",
   openGraph: {
-    url: "https://www.1chooo.com/",
+    url: "https://code-alchemy.netlify.app",
     type: "website",
-    siteName: "Chun-Ho (Hugo) Lin - 1chooo | Open Source Enthusiast",
-    title: "Chun-Ho (Hugo) Lin - 1chooo | Open Source Enthusiast",
-    description: "I'm Chun-Ho (Hugo) Lin, a graduate with a Bachelor's degree from National Central University (NCU) 🐿️, driven by a sincere passion for Software Engineering 💻.",
-    images: [
-      {
-        url: "https://docs.1chooo.com/images/cover-with-1chooo-com.png",
-        width: 1200,
-        height: 630,
-        alt: "Chun-Ho (Hugo) Lin - 1chooo Cover Image",
-      },
-    ],
+    siteName: "Aditya Kumar Singh - theCodeAlchemy",
+    title: "Aditya Kumar Singh - theCodeAlchemy | Software Engineer",
+    description: "I'm Aditya Kumar Singh, a B-Tech graduate in Mechanical Engineering from IIT Hyderabad, passionate about software development.",
+    images: [],
   },
   navItems: [
     { path: '/', label: 'About' },
@@ -62,13 +55,13 @@ const config: Config = {
     {
       icon: LuMapPin,
       title: "Location",
-      content: "Taipei, Taiwan 🇹🇼",
+      content: "Hyderabad, India 🇮🇳",
     },
     {
       icon: LuMail,
       title: "Email",
-      link: "mailto:hugo970217@gmail.com",
-      content: "hugo970217@gmail.com",
+      link: "mailto:aditya829925@gmail.com",
+      content: "aditya829925@gmail.com",
     },
     // {
     //   icon: TbPhoneCalling,
@@ -78,8 +71,8 @@ const config: Config = {
     {
       icon: LuGithub,
       title: "GitHub",
-      link: "https://github.com/1chooo",
-      content: "1chooo",
+      link: "https://github.com/thecodealchemy",
+      content: "thecodealchemy",
     },
     // {
     //   icon: IoCalendarOutline,
@@ -89,28 +82,26 @@ const config: Config = {
     {
       icon: LuLinkedin,
       title: "LinkedIn",
-      link: "https://www.linkedin.com/in/1chooo/",
-      content: "Chun-Ho (Hugo) Lin",
+      link: "https://www.linkedin.com/in/thecodealchemy/",
+      content: "Aditya Kumar Singh",
     },
   ],
   socialLinks: [
-    { url: `https://github.com/1chooo`, icon: LuGithub, name: 'GitHub' },
-    { url: `https://www.linkedin.com/in/1chooo/`, icon: LuLinkedin, name: 'LinkedIn' },
-    { url: `https://medium.com/@1chooo`, icon: PiMediumLogoBold, name: 'Medium' },
-    { url: `https://twitter.com/1chooo___`, icon: FaXTwitter, name: 'Twitter' },
-    { url: `/rss.xml`, icon: LuRss, name: 'RSS Feed' },
-    { url: `/cv.pdf`, icon: MdAttachment, name: 'CV' },
+    { url: `https://github.com/thecodealchemy`, icon: LuGithub, name: 'GitHub' },
+    { url: `https://www.linkedin.com/in/thecodealchemy/`, icon: LuLinkedin, name: 'LinkedIn' },
+    { url: `https://twitter.com/alchemyxcode`, icon: FaXTwitter, name: 'Twitter' },
+    { url: `/ADITYA_KUMAR_SINGH.pdf`, icon: MdAttachment, name: 'CV' },
   ],
   about: {
-    "firstName": 'Chun-Ho',
-    "lastName": 'Lin',
-    "middleName": "",
-    "preferredName": "Hugo",
-    "additionalName": "Hugo",
-    "pronouns": 'He/Him',
-    "githubUsername": "1chooo",
-    "introduction": `
-I obtained my Bachelor's degree from [National Central University 🐿️](https://www.ncu.edu.tw/), driven by a *sincere passion* for **Software Engineering 💻.**
+    firstName: 'Aditya',
+    lastName: 'Kumar Singh',
+    middleName: "",
+    preferredName: "",
+    additionalName: "Singh",
+    pronouns: 'He/Him',
+    githubUsername: "thecodealchemy",
+    introduction: `
+I obtained my B-Tech degree from [IIT Hyderabad](https://www.iith.ac.in/), driven by a *sincere passion* for **Software Engineering 💻.**
 
 Software is built by humans. Unfortunately, humans make errors, <mark class="text-orange-yellow-crayola bg-transparent"><b>LOTS of ERRORS.</b></mark> Throughout human history, humans have learned to craft machines and tools to help us construct complex architecture. Inspired by this, I explore practical methodologies and tools to improve large-scale software systems' quality, reliability, and efficiency.
 
@@ -140,35 +131,28 @@ In my spare time, I focus on contributing to open-source projects, alongside wor
         text: "Sky brings freedom; streets, a reminder of others' contributions."
       }
     ],
-    "techStacks": {
+    techStacks: {
       programmingLanguages: [
         { name: 'Python', icon: AiOutlinePython },
         { name: 'TypeScript', icon: TbBrandTypescript },
-        { name: 'Golang', icon: TbBrandGolang },
-        { name: 'C++', icon: TbBrandCpp },
         { name: 'Java', icon: RiJavaLine },
         { name: 'JavaScript', icon: RiJavascriptLine },
-        { name: 'LaTeX', icon: SiLatex },
-        { name: 'Markdown', icon: TbMarkdown },
-        { name: 'Astro', icon: TbBrandAstro },
-        { name: 'Terraform', icon: TbBrandTerraform },
+        { name: 'C++', icon: TbBrandCpp },
+        { name: 'SQL', icon: TbBrandMysql },
+        { name: 'Bash', icon: VscTerminalLinux },
       ],
       frameworks: [
         { name: 'React', icon: FaReact },
-        { name: 'FastAPI', icon: SiFastapi },
-        { name: 'Flask', icon: BiLogoFlask },
-        { name: 'Redis', icon: DiRedis },
-        { name: 'Linux Terminal', icon: VscTerminalLinux },
-        { name: 'AWS', icon: FaAws },
-        { name: 'Next.js', icon: TbBrandNextjs },
+        { name: 'Node.js', icon: TbBrandNextjs },
+        { name: 'Express', icon: TbBrandDjango },
         { name: 'Docker', icon: TbBrandDocker },
-        { name: 'MySQL', icon: TbBrandMysql },
-        { name: 'Django', icon: TbBrandDjango },
         { name: 'Kubernetes', icon: SiKubernetes },
-        { name: 'Postman', icon: SiPostman },
+        { name: 'AWS', icon: FaAws },
+        { name: 'Jenkins', icon: SiPostman },
+        { name: 'Linux', icon: VscTerminalLinux },
         { name: 'Azure', icon: VscAzure },
       ],
-    }
+    },
   },
   resume: {
     "educations": {
@@ -277,8 +261,8 @@ In my spare time, I focus on contributing to open-source projects, alongside wor
   },
   "giscusConfig": {
     id: "comments",
-    repo: "1chooo/1chooo.com",
-    repoId: "R_kgDOLBatdw",
+    repo: "thecodealchemy/MyPortfolio",
+    repoId: "920166687",
     category: "General",
     categoryId: "DIC_kwDOLBatd84CjpPs",
     mapping: "pathname",

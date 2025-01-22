@@ -108,8 +108,7 @@ async function About() {
     },
   }));
 
-  let header = preferredName ?
-    `About ${preferredName} 👨🏻‍💻` : `About ${firstName} ${lastName} 👨🏻‍💻`;
+  let header = `About me 👨🏻‍💻`
 
   return (
     <article>
@@ -122,7 +121,7 @@ async function About() {
       <PageHeader header={header} />
       <AboutHeader
         id="introduction"
-        text="$ ls -al Hugo 👨🏻‍💻 (He/Him)"
+        text="$ ls -al Self 👨🏻‍💻"
       />
       <MarkdownRenderer
         className="text-light-gray leading-relaxed"

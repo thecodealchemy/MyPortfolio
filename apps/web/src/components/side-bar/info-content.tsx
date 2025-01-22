@@ -17,8 +17,8 @@ function InfoContent() {
     <div className="info-content">
       <h1
         className="name"
-        title={`${firstName} (${preferredName}) ${lastName}`}
-      >{firstName} ({preferredName}) {lastName}
+        title={`${firstName} ${lastName}`}
+      >{firstName} {lastName}
       </h1>
       <p className="text-white-1 bg-onyx text-xs font-light max-w-max rounded-[8px] custom-lg:m-auto px-[12px] py-[3px] md:px-[18px] md:py-[5px]">
         <strong>{status}</strong>

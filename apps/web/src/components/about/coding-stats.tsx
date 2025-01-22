@@ -38,7 +38,7 @@ function CodingStats({ techStacks, githubUsername }: CodingStatsProps) {
     <section id="coding-stats">
       <AboutHeader
         id="coding-stats"
-        text="$ ls -al Coding Stats"
+        text="$ ls -al Stats"
       />
       <ul className="mt-[30px] grid grid-cols-1 gap-[20px] md:grid-cols-2 lg:grid-cols-2 lg:gap-y-[20px] lg:gap-x-[25px]">
         <li className="relative rounded-2xl shadow-shadow-2 coding-item bg-gradient-onyx before:absolute before:content-[''] before:rounded-2xl">
@@ -69,7 +69,7 @@ function CodingStats({ techStacks, githubUsername }: CodingStatsProps) {
           <div className='absolute inset-x-0 bottom-[-190px] mx-auto aspect-square h-[388px] [@media(max-width:420px)]:bottom-[-140px] [@media(max-width:420px)]:h-[320px] [@media(min-width:768px)_and_(max-width:858px)]:h-[380px]'>
             <div className='flex items-center gap-2 text-white-2 mt-4 ml-4'>
               <LuMapPin size={18} />
-              <h2 className='text-sm font-light'>Taipei, Taiwan (UTC +08:00)</h2>
+              <h2 className='text-sm font-light'>Hyderabad, India (UTC +05:30)</h2>
             </div>
             <Globe />
           </div>
