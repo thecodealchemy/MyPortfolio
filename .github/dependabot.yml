@@ -9,7 +9,7 @@ updates:
     schedule:
       interval: "weekly"
     assignees:
-      - "1chooo"
+      - "thecodealchemy"
     reviewers:
-      - "1chooo"
+      - "thecodealchemy"
     open-pull-requests-limit: 10
