@@ -84,7 +84,7 @@ $ pnpm run dev   # Open http://localhost:3001 with your browser to see the resul
 ## 📲 Contact Info
 
 > **Hugo ChunHo Lin**
-> 
+>
 > <aside>
 >   📩 E-mail: <a href="mailto:hugo970217@gmail.com">hugo970217@gmail.com</a>
 > <br>
@@ -98,9 +98,9 @@ $ pnpm run dev   # Open http://localhost:3001 with your browser to see the resul
 
 > [!IMPORTANT]
 > This work is licensed under a [Creative Commons Attribution 4.0 International License][cc-by] by [Chun-Ho (Hugo) Lin][1chooo-com].
-> 
+>
 > [cc-by]: http://creativecommons.org/licenses/by/4.0/
-> 
+>
 > 1. You are free to use this code as inspiration.
 > 2. Please do not copy it directly.
 > 3. Crediting the author is appreciated.

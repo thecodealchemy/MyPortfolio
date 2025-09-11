@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -29,8 +29,8 @@ type Post = {
 const handleSeeMorePostsClick = () => {
   console.log("See More Posts button clicked!");
   sendGTMEvent({
-    event: 'seeMorePostsClicked',
-    value: process.env.NEXT_PUBLIC_GTM_ID
+    event: "seeMorePostsClicked",
+    value: process.env.NEXT_PUBLIC_GTM_ID,
   });
 };
 
@@ -66,7 +66,7 @@ function LatestArticles({ posts }: LatestArticlesProps) {
 
   return (
     <section>
-      <AboutHeader id="latest-articles" text="$ ls -al Latest Articles" />
+      <AboutHeader id="latest-articles" text="$ ls -al Latest Projects" />
       <ul className="latest-post-list">
         {visiblePosts.map((post) => (
           <li
@@ -74,7 +74,10 @@ function LatestArticles({ posts }: LatestArticlesProps) {
             className="latest-post-item group active"
             data-category={post.metadata.category}
           >
-            <ProgressBarLink href={`/post/${post.slug}`} rel="noopener noreferrer">
+            <ProgressBarLink
+              href={`/post/${post.slug}`}
+              rel="noopener noreferrer"
+            >
               <figure className="latest-post-img">
                 <div className="absolute latest-post-item-icon-box text-orange-yellow-crayola text-xl bg-jet p-[18px] rounded-xl top-1/2 left-1/2 transition-all duration-250 ease-linear">
                   <LuEye />
@@ -97,20 +100,6 @@ function LatestArticles({ posts }: LatestArticlesProps) {
           </li>
         ))}
       </ul>
-      <div className="z-10 flex items-center justify-center">
-        <div
-          className={cn(
-            "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
-          )}
-        >
-          <ProgressBarLink href="/post" onClick={handleSeeMorePostsClick}>
-            <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-              <span>✨ See More Posts</span>
-              <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-            </AnimatedShinyText>
-          </ProgressBarLink>
-        </div>
-      </div>
     </section>
   );
 }

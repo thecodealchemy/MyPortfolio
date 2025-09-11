@@ -1,5 +1,5 @@
-import { getBlogPosts } from '@/lib/db/v1/post';
-import { getPortfolioPosts } from '@/lib/db/v1/portfolio';
+import { getBlogPosts } from "@/lib/db/v1/post";
+import { getPortfolioPosts } from "@/lib/db/v1/portfolio";
 
 /**
  * This function returns an array of objects with the URL and last modified date
@@ -8,28 +8,24 @@ import { getPortfolioPosts } from '@/lib/db/v1/portfolio';
  */
 export default async function sitemap() {
   let blogs = await getBlogPosts();
-  let blogMaps = blogs.map((post: {
-    metadata: { publishedAt: string }; slug: string
-  }) => ({
-    url: `https://1chooo.com/post/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+  let blogMaps = blogs.map(
+    (post: { metadata: { publishedAt: string }; slug: string }) => ({
+      url: `https://1chooo.com/post/${post.slug}`,
+      lastModified: post.metadata.publishedAt,
+    })
+  );
 
   let portfolios = await getPortfolioPosts();
-  let portfolioMaps = portfolios.map((post: { metadata: { publishedAt: string }; slug: string }) => ({
-    url: `https://1chooo.com/portfolio/${post.slug}`,
-    lastModified: post.metadata.publishedAt,
-  }));
+  let portfolioMaps = portfolios.map(
+    (post: { metadata: { publishedAt: string }; slug: string }) => ({
+      url: `https://1chooo.com/portfolio/${post.slug}`,
+      lastModified: post.metadata.publishedAt,
+    })
+  );
 
-  let routes = [
-    '',
-    '/resume',
-    '/portfolio',
-    '/post',
-    '/gallery'
-  ].map((route) => ({
+  let routes = ["", "/resume", "/portfolio"].map((route) => ({
     url: `https://1chooo.com${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+    lastModified: new Date().toISOString().split("T")[0],
   }));
 
   return [...routes, ...blogMaps, ...portfolioMaps];
