@@ -321,11 +321,9 @@ main {
   margin: 0 -15px;
   padding: 25px;
   padding-bottom: 25px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 25px;
+  /* Allow items to wrap to the next line instead of horizontal scrolling */
+  flex-wrap: wrap;
+  scroll-behavior: auto;
 }
 
 .clients-item {

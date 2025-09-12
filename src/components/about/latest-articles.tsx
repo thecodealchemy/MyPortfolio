@@ -76,7 +76,7 @@ function LatestArticles({ posts, hrefBase = "/post" }: LatestArticlesProps) {
             data-category={post.metadata.category}
           >
             <ProgressBarLink
-              href={`${hrefBase}/${post.slug}`}
+              href={`${hrefBase}`}
               rel="noopener noreferrer"
             >
               <figure className="latest-post-img">

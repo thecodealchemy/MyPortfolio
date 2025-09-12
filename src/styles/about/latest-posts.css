@@ -1,20 +1,20 @@
 .latest-post-list {
+    /* Use flex wrap instead of horizontal scrolling to keep items even and accessible */
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 30px;
     margin-bottom: 10px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
-    scroll-padding-inline: 25px;
+    flex-wrap: wrap;
 }
 
 .latest-post-img {
     position: relative;
     width: 100%;
-    height: 200px;
+    /* Use a fixed aspect ratio to keep all project cards uniform */
+    aspect-ratio: 16 / 9;
+    min-height: 160px; /* fallback for browsers without aspect-ratio support */
+    max-height: 220px;
     border-radius: 16px;
     overflow: hidden;
     margin-bottom: 15px;
@@ -33,8 +33,11 @@
 }
 
 .latest-post-item {
+    /* Make card widths consistent across items so content aligns */
     flex: 0 0 calc(100% / 2 - 15px);
     scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
 }
 
 .latest-post-item.active {
@@ -51,6 +54,8 @@
 }
 
 .latest-post-img img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -90,6 +95,7 @@
 
     .latest-post-img {
         border-radius: 16px;
+        max-height: 260px;
     }
 }
 
@@ -101,7 +107,14 @@
 }
 
 @media (min-width: 1024px) {
+    /* On large screens, show exactly three items in one row */
+    .latest-post-list {
+        flex-wrap: nowrap; /* keep all items on one line */
+        overflow: hidden;
+    }
+
     .latest-post-item {
-        flex: 0 0 calc(100% / 3 - 20px);
+        flex: 0 0 calc((100% - 60px) / 3); /* account for gap between items (30px * 2 = 60px) */
+        max-width: calc((100% - 60px) / 3);
     }
 }

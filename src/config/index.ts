@@ -301,7 +301,7 @@ For collaborations or to request a copy of my resume, contact me at adityaks.tec
           publishedAt: "2024-08-01",
           summary:
             "Puzzlemaster is my personal puzzle and brain-teaser site featuring logic puzzles, interactive challenges, and write-ups. Built and maintained as a playground for puzzle design and web experimentation.",
-          category: "Personal",
+          category: "React.js + Node.js",
           banner: "/images/portfolio/puzzlemaster.png",
           alt: "Puzzlemaster website",
           link: "https://puzzlemaster.xyz",

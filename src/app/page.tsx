@@ -4,7 +4,6 @@ import Script from "next/script";
 import PageHeader from "@/components/page-header";
 import AboutHeader from "@/components/about/about-header";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
-import { getPortfolioPosts } from "@/lib/db/v1/portfolio";
 import config from "@/config";
 
 const DynamicLatestArticles = dynamic(
@@ -107,13 +106,14 @@ const addJsonLd = () => {
 };
 
 async function About() {
-  let allProjects = await getPortfolioPosts();
+  // Use projects defined in site config (resume.projects)
+  const allProjects = config.resume?.projects || [];
 
-  let selectedPosts = allProjects.map((post: any) => ({
-    ...post,
+  const selectedPosts = allProjects.map((post: any) => ({
+    slug: post.slug,
     metadata: {
       ...post.metadata,
-      category: post.metadata.category || "Project",
+      category: post.metadata?.category || "Project",
     },
   }));
 

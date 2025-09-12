@@ -19,6 +19,18 @@
   padding: 10px;
 }
 
+#github-calendar {
+  /* Ensure the calendar doesn't cause horizontal scroll */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#github-calendar .react-activity-calendar,
+#github-calendar svg {
+  max-width: 100%;
+  height: auto !important;
+}
+
 @media (min-width: 580px) {
   .coding-item {
     display: flex;
