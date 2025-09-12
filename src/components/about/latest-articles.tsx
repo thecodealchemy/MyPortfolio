@@ -36,9 +36,10 @@ const handleSeeMorePostsClick = () => {
 
 interface LatestArticlesProps {
   posts: Post[];
+  hrefBase?: string; // e.g. '/post' or '/portfolio'
 }
 
-function LatestArticles({ posts }: LatestArticlesProps) {
+function LatestArticles({ posts, hrefBase = "/post" }: LatestArticlesProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [visiblePosts, setVisiblePosts] = useState<Post[]>([]);
@@ -75,7 +76,7 @@ function LatestArticles({ posts }: LatestArticlesProps) {
             data-category={post.metadata.category}
           >
             <ProgressBarLink
-              href={`/post/${post.slug}`}
+              href={`${hrefBase}/${post.slug}`}
               rel="noopener noreferrer"
             >
               <figure className="latest-post-img">

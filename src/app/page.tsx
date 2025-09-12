@@ -4,7 +4,7 @@ import Script from "next/script";
 import PageHeader from "@/components/page-header";
 import AboutHeader from "@/components/about/about-header";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
-import { getBlogPosts } from "@/lib/db/v1/post";
+import { getPortfolioPosts } from "@/lib/db/v1/portfolio";
 import config from "@/config";
 
 const DynamicLatestArticles = dynamic(
@@ -107,13 +107,13 @@ const addJsonLd = () => {
 };
 
 async function About() {
-  let allBlogs = await getBlogPosts();
+  let allProjects = await getPortfolioPosts();
 
-  let selectedPosts = allBlogs.map((post: any) => ({
+  let selectedPosts = allProjects.map((post: any) => ({
     ...post,
     metadata: {
       ...post.metadata,
-      category: post.metadata.category || "Uncategorized",
+      category: post.metadata.category || "Project",
     },
   }));
 
@@ -133,7 +133,7 @@ async function About() {
         className="text-light-gray leading-relaxed"
         content={introduction}
       />
-      <DynamicLatestArticles posts={selectedPosts} />
+      <DynamicLatestArticles posts={selectedPosts} hrefBase="/portfolio" />
       <DynamicCodingStats
         techStacks={techStacks}
         githubUsername={githubUsername}

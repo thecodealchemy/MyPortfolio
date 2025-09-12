@@ -1,0 +1,21 @@
+.pg-project-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;list-style:none;padding:0;margin:0}
+.pg-project-item{cursor:pointer;background:var(--card-bg, #0b0b0b);padding:1rem;border-radius:0.75rem;box-shadow:var(--card-shadow, 0 2px 12px rgba(0,0,0,0.4));color:var(--text, #fff)}
+.pg-project-img{height:140px;overflow:hidden;border-radius:0.5rem;margin-bottom:0.75rem}
+.pg-project-placeholder{height:140px;background:linear-gradient(90deg,#222,#333);border-radius:0.5rem}
+.pg-project-title{font-weight:700;margin:0 0 0.25rem}
+.pg-project-category{color:var(--muted);margin:0}
+
+.project-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:99999;pointer-events:none}
+.project-modal-backdrop{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.72));backdrop-filter:blur(4px) saturate(110%);-webkit-backdrop-filter:blur(4px) saturate(110%);pointer-events:auto;opacity:0;transition:opacity 220ms ease}
+.project-modal.open .project-modal-backdrop,.project-modal[aria-hidden="false"] .project-modal-backdrop{opacity:1}
+.project-modal.open{pointer-events:auto}
+.project-modal-panel{position:relative;background:var(--card-bg, #0f1724);color:var(--text, #fff);padding:1.5rem;border-radius:0.75rem;max-width:720px;width:95%;z-index:100000;box-shadow:0 30px 80px rgba(2,6,23,0.75);transform:translateY(8px) scale(0.995);opacity:0;transition:transform 240ms cubic-bezier(.2,.9,.2,1),opacity 220ms ease;border:1px solid rgba(255,255,255,0.04);pointer-events:auto}
+.project-modal.open .project-modal-panel,.project-modal[aria-hidden="false"] .project-modal-panel{transform:translateY(0) scale(1);opacity:1}
+.project-modal-close{position:absolute;right:0.6rem;top:0.6rem;background:transparent;border:0;font-size:1.05rem;color:var(--muted);cursor:pointer;padding:0.25rem;border-radius:0.375rem;transition:background 160ms ease,color 160ms ease}
+.project-modal-close:hover{background:rgba(255,255,255,0.03);color:var(--text)}
+.project-summary{margin-top:1rem;color:var(--muted)}
+.project-actions{display:flex;gap:0.5rem;margin-top:1.25rem}
+.btn{padding:0.5rem 0.75rem;border-radius:0.375rem;background:transparent;border:1px solid var(--muted);color:var(--text);cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,#ffb347,#ffcc33);border:0;color:#000;display:inline-flex;align-items:center;gap:0.5rem}
+.inline-icon{margin-left:0.35rem}
+.pg-no-projects{color:var(--muted);padding:1rem}

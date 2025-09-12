@@ -5,6 +5,20 @@ export type Resume = {
   awardLeaderships: AwardLeaderships;
   teachingExperiences: TeachingExperience;
   professionalExperiences: ProfessionalExperience;
+  projects?: Project[];
+};
+
+export type Project = {
+  slug: string;
+  metadata: {
+    title: string;
+    publishedAt: string;
+    summary?: string;
+    category?: string;
+    banner?: string;
+    alt?: string;
+    link?: string;
+  };
 };
 
 /**

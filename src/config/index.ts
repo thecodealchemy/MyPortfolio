@@ -228,6 +228,86 @@ For collaborations or to request a copy of my resume, contact me at adityaks.tec
         },
       ],
     },
+    // Projects sourced from resume
+    projects: [
+      {
+        slug: "Dating Site",
+        metadata: {
+          title: "Airmatch.in (MERN)",
+          publishedAt: "2022-07-01",
+          summary:
+            "Developed a full-stack dating web application using the MERN stack, implementing user authentication, profile management, and real-time chat features to enhance user engagement.",
+          banner: "/images/portfolio/airmatch.png",
+          alt: "Airmatch",
+          link: "https://airmatch.in/",
+        },
+      },
+      {
+        slug: "instagram-automation",
+        metadata: {
+          title: "Instagram Automation (Python)",
+          publishedAt: "2021-11-01",
+          summary:
+            "Automated creation and publishing of Instagram posts using scripts and scheduled Jenkins jobs to streamline content workflows.",
+          category: "Python",
+          banner: "/images/portfolio/instagram-automation.png",
+          alt: "Instagram Automation project",
+          link: "https://www.instagram.com/wiseminds.ig",
+        },
+      },
+      {
+        slug: "wazirX Chrome Extension",
+        metadata: {
+          title: "Chrome Extension for WazirX",
+          publishedAt: "2020-05-01",
+          summary:
+            "A chrome extension to analyse wazirx buy/sell orders and PnL summarizer scripts.",
+          category: "JavaScript",
+          banner: "/images/portfolio/wazirx-extension.png",
+          alt: "WazirX Chrome Extension project",
+          link: "https://chromewebstore.google.com/detail/mrx-wazirx-portfolio-enha/ofnbphpblmbcboolheihpgeeijbkgjfp",
+        },
+      },
+      {
+        slug: "CollabKart",
+        metadata: {
+          title: "CollabKart.com (MERN)",
+          publishedAt: "2023-10-01",
+          summary:
+            "A collab tool for Brands to connect with content creators and influencers.",
+          category: "JavaScript",
+          banner: "/images/portfolio/collabkart.png",
+          alt: "CollabKart project",
+          link: "https://collabkart.com/",
+        },
+      },
+      {
+        slug: "HackerNews Clone",
+        metadata: {
+          title: "HackerNews Clone (React.js)",
+          publishedAt: "2023-01-01",
+          summary:
+            "HackerNews 2.0 is a modern, responsive web application that provides an improved interface for browsing Hacker News stories. The app allows users to explore top, new, and best stories, view detailed comments, and check user profiles with a sleek dark/light mode switch.",
+          category: "TypeScript",
+          banner: "/images/portfolio/hackernews2.png",
+          alt: "HackerNews Clone project",
+          link: "https://hackernewspro.netlify.app/",
+        },
+      },
+      {
+        slug: "puzzlemaster",
+        metadata: {
+          title: "Puzzlemaster.xyz",
+          publishedAt: "2024-08-01",
+          summary:
+            "Puzzlemaster is my personal puzzle and brain-teaser site featuring logic puzzles, interactive challenges, and write-ups. Built and maintained as a playground for puzzle design and web experimentation.",
+          category: "Personal",
+          banner: "/images/portfolio/puzzlemaster.png",
+          alt: "Puzzlemaster website",
+          link: "https://puzzlemaster.xyz",
+        },
+      },
+    ],
   },
   giscusConfig: {
     id: "comments",
