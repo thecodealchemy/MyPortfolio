@@ -104,14 +104,16 @@ const config: Config = {
     pronouns: "He/Him",
     githubUsername: "thecodealchemy",
     introduction: `
-I obtained my B-Tech degree from [IIT Hyderabad](https://www.iith.ac.in/), driven by a *sincere passion* for **Software Engineering 💻.**
+I am Aditya Kumar Singh, a software engineer based in Gurugram, India. I earned my B.Tech in Mechanical Engineering from the Indian Institute of Technology, Hyderabad, where I built a strong foundation in analytical thinking, systems design, and practical problem-solving.
 
-Software is built by humans. Unfortunately, humans make errors, <mark class="text-orange-yellow-crayola bg-transparent"><b>LOTS of ERRORS.</b></mark> Throughout human history, humans have learned to craft machines and tools to help us construct complex architecture. Inspired by this, I explore practical methodologies and tools to improve large-scale software systems' quality, reliability, and efficiency.
+I currently work as a Software Development Engineer at Amazon, where I focus on designing and implementing backend systems that prioritize scalability, reliability, and low-latency performance. I approach engineering end-to-end — from clarifying requirements to delivering production-ready, observable services — and I emphasize maintainability and testability.
 
-In my spare time, I focus on contributing to open-source projects, alongside working out 💪🏻, capturing street photography 📸, and writing tech content ✍🏻.
+My core interests include distributed systems, performance optimization, and developer tooling. I apply principled engineering to reduce operational complexity, improve observability, and enable faster iteration across teams and products. I also document technical decisions and share practical lessons to help others adopt better engineering practices.
 
-**Self-motivated, Team player, Love coding 👨🏻‍💻**
-    `,
+Outside of work, I enjoy strength training, street photography, and writing technical notes that make systems-level concepts more accessible. I value collaborative problem-solving, mentorship, and opportunities to translate ideas into production-quality software.
+
+For collaborations or to request a copy of my resume, contact me at adityaks.tech@gmail.com or view my CV [here](/ADITYA_KUMAR_SINGH.pdf).
+  `,
     lifestyles: [
       {
         icon: LuGithub,
@@ -140,7 +142,6 @@ In my spare time, I focus on contributing to open-source projects, alongside wor
         { name: "TypeScript", icon: TbBrandTypescript },
         { name: "Java", icon: RiJavaLine },
         { name: "JavaScript", icon: RiJavascriptLine },
-        { name: "C++", icon: TbBrandCpp },
         { name: "SQL", icon: TbBrandMysql },
         { name: "Bash", icon: VscTerminalLinux },
       ],
@@ -154,6 +155,9 @@ In my spare time, I focus on contributing to open-source projects, alongside wor
         { name: "Jenkins", icon: SiPostman },
         { name: "Linux", icon: VscTerminalLinux },
         { name: "Azure", icon: VscAzure },
+        { name: "FastAPI", icon: SiFastapi },
+        { name: "Redis", icon: DiRedis },
+        { name: "Spring Boot", icon: RiJavaLine },
       ],
     },
   },
