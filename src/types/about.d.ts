@@ -6,7 +6,7 @@ export type LifeStyle = {
   icon: VCardIconType;
   title: string;
   text: string;
-}
+};
 
 export type TechStack = {
   name: string;
@@ -23,11 +23,11 @@ interface TechStacks {
  *
  * @example
  * about: {
- *   "firstName": 'Chun-Ho',
- *   "lastName": 'Lin',
+ *   "firstName": 'Aditya',
+ *   "lastName": 'Kumar Singh',
  *   "middleName": "",
- *   "preferredName": "Hugo",
- *   "additionalName": "Hugo",
+ *   "preferredName": "Aditya",
+ *   "additionalName": "Aditya",
  *   "pronouns": 'He/Him',
  *   ...
  * }
@@ -44,4 +44,4 @@ export type About = {
   introduction: string;
   lifestyles: LifeStyle[];
   techStacks: TechStacks;
-}
+};

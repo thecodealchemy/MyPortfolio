@@ -5,7 +5,7 @@ startDate: 2024-03-01
 endDate: 2024-05-31
 publishedAt: 2024-05-31
 summary: "This is the project that I served as an Intern at eCloudValley in 2024/03-2024/05. The project is to build a ticket system for the customer service department."
-tags: 
+tags:
   - TAM
   - Cloud Engineer
   - Intern
@@ -19,9 +19,12 @@ This is the project that I served as an Intern at eCloudValley in 2024/03-2024/0
 
 <div align="center">
   <strong>
-    <a href="https://github.com/TODAM-tw/todam-ticket-system">💻 Source Code</a>&nbsp;&nbsp;&bull;&nbsp;
+    <a href="https://github.com/TODAM-tw/todam-ticket-system">💻 Source Code</a>
+    &nbsp;&nbsp;&bull;&nbsp;
     <a href="https://youtu.be/i86gxusBZNY">🎥 Demo</a>&nbsp;&nbsp;&bull;&nbsp;
-    <a href="https://github.com/TODAM-tw/todam-ticket-system/tree/main/docs">📚 Docs</a>
+    <a href="https://github.com/TODAM-tw/todam-ticket-system/tree/main/docs">
+      📚 Docs
+    </a>
   </strong>
 </div>
 
@@ -43,6 +46,7 @@ Python version `python3.11` or later with [`poetry`](https://python-poetry.org/)
 - `mangum = "^0.17.0"`
 
 ### Build `venv` for **MacOS**
+
 ```shell
 $ python3.11 -m venv venv
 $ source venv/bin/activate
@@ -51,6 +55,7 @@ $ rm -rf venv     # remove the venv
 ```
 
 ### Build `venv` for **Windows**
+
 ```shell
 $ pip install virtualenv
 $ virtualenv venv
@@ -98,9 +103,10 @@ $ python app.py --port 8081 --dev
 
 > [!NOTE]
 > If you want to run the app with the `uvicorn` server, so that you can design your own API and **reload** the app, you can run the following command.
+>
 > ```shell
 > $ ./scripts/run.sh
-> 
+>
 > # or
 > $ uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
 > ```
@@ -119,7 +125,6 @@ $ docker build -t todam-ticket-system:<TAG_NAME> .
 $ docker run -p 8080:8080 todam-ticket-system:<TAG_NAME>
 ```
 
-
 ### Deploy to AWS Lambda Function with AWS CDK
 
 ```shell
@@ -129,13 +134,13 @@ $ cdk deploy
 
 ## CONTACT INFO.
 
-> Cloud Engineer Intern, eCloudValley <br />
-> **Hugo ChunHo Lin**
-> 
-> - 📩 E-mail: <a href="mailto:hugo970217@gmail.com">hugo970217@gmail.com</a>
-> - 📩 ECV E-mail: <a href="mailto:hugo.lin@ecloudvalley.com">hugo.lin@ecloudvalley.com</a>
-> - 🧳 Linkedin: <a href="https://www.linkedin.com/in/1chooo/">Hugo ChunHo Lin</a>
-> - 👨🏻‍💻 GitHub: <a href="https://github.com/1chooo">1chooo</a>
+> Cloud Engineer Intern, eCloudValley <br /> > **Hugo ChunHo Lin**
+
+- 📩 E-mail: <a href="mailto:adityaks.tech@gmail.com">adityaks.tech@gmail.com</a>
+  > - 📩 ECV E-mail: <a href="mailto:hugo.lin@ecloudvalley.com">hugo.lin@ecloudvalley.com</a>
+  > - 🧳 Linkedin: <a href="https://www.linkedin.com/in/1chooo/">Hugo ChunHo Lin</a>
+  > - 👨🏻‍💻 GitHub: <a href="https://github.com/1chooo">1chooo</a>
 
 ## License
+
 Released under [Apache License](./LICENSE) by [TODAM-tw](https://github.com/TODAM-tw).

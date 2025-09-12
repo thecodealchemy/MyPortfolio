@@ -1,8 +1,8 @@
 ---
 title: "(Updating) LeetCode November 2024 Daily Challenge by Hugo"
-publishedAt: '2024-11-30'
+publishedAt: "2024-11-30"
 category: LeetCode
-tags: 
+tags:
   - VSCode
   - LeeCode
   - Daily Challenge
@@ -18,7 +18,7 @@ Hey there 👋! This is Hugo. This is my first time participating in the LeetCod
 
 ```cpp
 /**
- * Author: 1chooo<hugo970217@gmail.com>
+ * Author: thecodealchemy<adityaks.tech@gmail.com>
  * Problem: https://leetcode.com/problems/delete-characters-to-make-fancy-string
  * Runtime: 15ms (93.51%)
  */
@@ -109,7 +109,7 @@ public:
         for (int i = 0; i < s.length(); i++) {
             if (rotated == goal)
                 return true;
-            
+
             char ch = rotated[0];
             rotated.erase(0, 1);
             rotated.push_back(ch);
@@ -135,7 +135,7 @@ public:
         if (s.length() != goal.length()) {
             return false;
         }
-        
+
         string doubled = s + s;
 
         return doubled.find(goal) != string::npos;
@@ -700,7 +700,7 @@ class Solution {
         for (int i = 0; i < n; ++i) {
             pref[i + 1] = pref[i] + nums[i];
         }
-        
+
         deque<int> dq;
 
         int ans = n + 1;
@@ -975,7 +975,6 @@ class Solution {
 ```
 
 ## [1861. Rotating the Box](https://leetcode.com/problems/rotating-the-box/) [Medium] - 2024-11-23
-
 
 ```cpp
 /**

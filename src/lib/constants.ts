@@ -1,14 +1,14 @@
 import type { Breakpoint } from "@/hooks/use-responsive-image-size";
-import moment from 'moment';
+import moment from "moment";
 
-export const GITHUB_USERNAME = '1chooo';
-export const MEDIUM_USERNAME = '1chooo';
-export const TWITTER_USERNAME = '1chooo___';
-export const LINKEDIN_USERNAME = '1chooo';
-export const EMAIL = 'hugo970217@gmail.com';
+export const GITHUB_USERNAME = "thecodealchemy";
+export const MEDIUM_USERNAME = "thecodealchemy";
+export const TWITTER_USERNAME = "thecodealchemy";
+export const LINKEDIN_USERNAME = "thecodealchemy";
+export const EMAIL = "adityaks.tech@gmail.com";
 
 export const POSTS_PER_PAGE = 8;
-export const BUILD_TIME = moment().format('MMMM Do YYYY');
+export const BUILD_TIME = moment().format("MMMM Do YYYY");
 
 export const DEVOPS = {
   linux: "linux",
@@ -20,10 +20,10 @@ export const DEVOPS = {
   kubernetes: "kubernetes",
   flask: "flask",
   gitlab: "gitlab",
-  redis: "redis"
-}
+  redis: "redis",
+};
 
-export const PROGLANG =  {
+export const PROGLANG = {
   python: "py",
   go: "go",
   java: "java",
@@ -33,8 +33,8 @@ export const PROGLANG =  {
   typescript: "typescript",
   javascript: "javascript",
   flutter: "flutter",
-  bash: "bash"
-}
+  bash: "bash",
+};
 
 export const breakpoints: Breakpoint[] = [
   { maxWidth: 250, size: { width: 80, height: 80 } },

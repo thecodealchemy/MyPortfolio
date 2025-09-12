@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import React from "react";
-import TimeLine from '@/components/resume/timeline';
-import PageHeader from '@/components/page-header';
-import config from '@/config';
+import TimeLine from "@/components/resume/timeline";
+import PageHeader from "@/components/page-header";
+import config from "@/config";
 import DownloadCV from "@/components/resume/download-cv";
 
 const { title } = config;
@@ -20,14 +20,12 @@ export const metadata: Metadata = {
 function Resume() {
   return (
     <article>
-      <PageHeader header="Hugo's Resume" />
+      <PageHeader header="Aditya's Resume" />
       <DownloadCV />
       <TimeLine data={professionalExperiences} />
       <TimeLine data={educations} />
-      <TimeLine data={awardLeaderships} />
-      <TimeLine data={teachingExperiences} />
-    </article >
+    </article>
   );
 }
 
-export default Resume
+export default Resume;

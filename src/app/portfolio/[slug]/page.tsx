@@ -1,16 +1,20 @@
-import React, { Suspense } from 'react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { unstable_noStore as noStore } from 'next/cache';
-import MarkdownRenderer from '@/components/markdown/markdown-renderer';
-import PageHeader from '@/components/page-header';
-import { getPortfolioPosts } from '@/lib/db/v1/portfolio';
+import React, { Suspense } from "react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
+import MarkdownRenderer from "@/components/markdown/markdown-renderer";
+import PageHeader from "@/components/page-header";
+import { getPortfolioPosts } from "@/lib/db/v1/portfolio";
 
-import "@/styles/blog/blog-text.css"
+import "@/styles/blog/blog-text.css";
 
 type tParams = Promise<{ slug: string }>;
 
-export async function generateMetadata({ params }: { params: tParams }): Promise<Metadata | undefined> {
+export async function generateMetadata({
+  params,
+}: {
+  params: tParams;
+}): Promise<Metadata | undefined> {
   const { slug } = await params;
   let posts = await getPortfolioPosts();
   let post = posts.find((post) => post.slug === slug);
@@ -25,20 +29,20 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
     banner,
   } = post.metadata;
   let ogImage = banner
-    ? `https://1chooo.com${banner}`
-    : `https://1chooo.com/og?title=${title}`;
+    ? `https://thecodealchemy.github.io${banner}`
+    : `https://thecodealchemy.github.io/og?title=${title}`;
 
   return {
     title,
     description,
     openGraph: {
       title,
-      siteName: 'Chun-Ho (Hugo) Lin - 1chooo | Open Source Enthusiast',
+      siteName: "Aditya Kumar Singh - thecodealchemy | Software Engineer",
       description,
-      type: 'article',
+      type: "article",
       publishedTime,
-      url: `https://1chooo.com/portfolio/${post.slug}`,
-      locale: 'en_US',
+      url: `https://thecodealchemy.github.io/portfolio/${post.slug}`,
+      locale: "en_US",
       images: [
         {
           url: ogImage,
@@ -46,7 +50,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [ogImage],
@@ -57,17 +61,17 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
 function formatDate(date: string) {
   noStore();
   let currentDate = new Date().getTime();
-  if (!date.includes('T')) {
+  if (!date.includes("T")) {
     date = `${date}T00:00:00`;
   }
   let targetDate = new Date(date).getTime();
   let timeDifference = Math.abs(currentDate - targetDate);
   let daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
-  let fullDate = new Date(date).toLocaleString('en-us', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+  let fullDate = new Date(date).toLocaleString("en-us", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 
   let daysLater: number = 0;
@@ -78,23 +82,23 @@ function formatDate(date: string) {
   if (daysLater > 365) {
     return `${fullDate} (${daysLater}d later)`;
   } else if (daysLater > 30) {
-    const weeksAgo = Math.floor(daysLater / 7)
+    const weeksAgo = Math.floor(daysLater / 7);
     return `${fullDate} (${weeksAgo}w later)`;
   } else if (daysLater > 7) {
-    const monthsAgo = Math.floor(daysLater / 30)
+    const monthsAgo = Math.floor(daysLater / 30);
     return `${fullDate} (${monthsAgo}mo later)`;
   } else if (daysAgo < 1) {
-    return 'Today';
+    return "Today";
   } else if (daysAgo < 7) {
     return `${fullDate} (${daysAgo}d ago)`;
   } else if (daysAgo < 30) {
-    const weeksAgo = Math.floor(daysAgo / 7)
+    const weeksAgo = Math.floor(daysAgo / 7);
     return `${fullDate} (${weeksAgo}w ago)`;
   } else if (daysAgo < 365) {
-    const monthsAgo = Math.floor(daysAgo / 30)
+    const monthsAgo = Math.floor(daysAgo / 30);
     return `${fullDate} (${monthsAgo}mo ago)`;
   } else {
-    const yearsAgo = Math.floor(daysAgo / 365)
+    const yearsAgo = Math.floor(daysAgo / 365);
     return `${fullDate} (${yearsAgo}y ago)`;
   }
 }
@@ -112,7 +116,7 @@ export default async function Portfolio(props: { params: tParams }) {
     <div>
       <article>
         <section className="blog-text">
-          <PageHeader header="Hugo's Portfolio" />
+          <PageHeader header="Aditya's Portfolio" />
           <h1 className="title font-semibold text-2xl font-text-2xl tracking-tighter max-w-[650px]">
             <MarkdownRenderer content={post.metadata.title} />
           </h1>

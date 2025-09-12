@@ -3,11 +3,11 @@ title: How to Make Your React TypeScript Project More Elegant with `map()`
 category: Project
 publishedAt: 2024-02-15
 summary: With React TypeScript and `map()`, you can create a more elegant personal blog. In this article, I share how to use the `map()` method to handle dynamic rendering of blog post lists and show the thought process of implementing the modification suggestions provided by ChatGPT.
-tags: 
-- React
-- Frontend
-- map
-- TypeScript
+tags:
+  - React
+  - Frontend
+  - map
+  - TypeScript
 banner: /images/banner/posts/make-your-react-more-elegant-with-map.webp
 alt: How to Make Your React TypeScript Project More Elegant with `map()`
 ---
@@ -20,28 +20,24 @@ Hey this is Hugo 👋 In the winter break of 2024, I planned to update my resume
 
 In this article, I share how I used React TypeScript and `map()` to create a more elegant personal blog. I will show you how to use the `map()` method to handle dynamic rendering of blog post lists and the thought process of implementing the modification suggestions provided by ChatGPT.
 
-
 ![The effect of dynamic rendering through map()](https://miro.medium.com/v2/format:webp/1*KkNkB-tsC-ktJ9d76GhKIA.png)
 
 The original blog page was written like this:
 
 ```tsx
 <ul className="blog-posts-list">
-  <li className="blog-post-item  active"
+  <li
+    className="blog-post-item  active"
     data-filter-item
     data-category="unboxing"
   >
     <a
-      href="https://medium.com/@1chooo/%E5%BF%98%E6%8E%89-youtube-premium-%E9%80%99%E4%BA%9B%E7%84%A1%E5%BB%A3%E5%91%8A%E7%80%8F%E8%A6%BD%E5%99%A8%E8%AE%93%E4%BD%A0%E6%84%9B%E4%B8%8D%E9%87%8B%E6%89%8B-901f7d15a59a"
+      href="https://medium.com/@thecodealchemy/"
       target="_blank"
       rel="noopener noreferrer"
     >
       <figure className="blog-banner-box">
-        <img
-          src={noAdsImage}
-          alt="No ads"
-          loading="lazy"
-        />
+        <img src={noAdsImage} alt="No ads" loading="lazy" />
       </figure>
       <div className="blog-content">
         <div className="blog-meta">
@@ -53,7 +49,10 @@ The original blog page was written like this:
           忘掉 YouTube Premium！這些無廣告瀏覽器讓你愛不釋手！
         </h3>
         <p className="blog-text">
-          在這個廣告橫行的 YouTube 時代，享受影片卻不被廣告干擾的感覺真是太棒了！透過 Brave 瀏覽器，我終於找到了解脫的方法，而且完全不必花錢購買 Premium。讓我們一起換個方式，享受無廣告的 YouTube 世界吧！
+          在這個廣告橫行的 YouTube
+          時代，享受影片卻不被廣告干擾的感覺真是太棒了！透過 Brave
+          瀏覽器，我終於找到了解脫的方法，而且完全不必花錢購買
+          Premium。讓我們一起換個方式，享受無廣告的 YouTube 世界吧！
         </p>
       </div>
     </a>
@@ -70,11 +69,7 @@ The original blog page was written like this:
       rel="noopener noreferrer"
     >
       <figure className="blog-banner-box">
-        <img
-          src={gitTipsImage}
-          alt="Git Tips Image"
-          loading="lazy"
-        />
+        <img src={gitTipsImage} alt="Git Tips Image" loading="lazy" />
       </figure>
       <div className="blog-content">
         <div className="blog-meta">
@@ -103,13 +98,13 @@ First, I created an interface to modularize the repeated information. Because ea
 
 ```tsx
 interface Post {
-  title:    JSX.Element;
+  title: JSX.Element;
   category: string;
   imageUrl: string;
-  date:     string;
-  content:  JSX.Element;
-  link:     string;
-  alt:      string;
+  date: string;
+  content: JSX.Element;
+  link: string;
+  alt: string;
 }
 ```
 
@@ -120,19 +115,23 @@ const postsData: Post[] = [
   {
     title: (
       <h3 className="h3 blog-item-title">
-        如何透過 <code>map()</code> 讓你的 <code>React TypeScript</code> 專案更加優雅？
+        如何透過 <code>map()</code> 讓你的 <code>React TypeScript</code>{" "}
+        專案更加優雅？
       </h3>
     ),
-    category: 'Projects',
+    category: "Projects",
     imageUrl: reactMappingTipsImage,
-    date: 'Fab 15, 2024',
+    date: "Fab 15, 2024",
     content: (
       <p className="blog-text">
-        透過 <code>React TypeScript</code> 和 <code>map()</code>  方法打造更優雅的個人部落格。在這篇文章中，我分享了如何利用 <code>map()</code>  方法來處理部落格文章列表的動態渲染，並展示了 ChatGPT 提供的修改建議和實作過程中的思考。
+        透過 <code>React TypeScript</code> 和 <code>map()</code>{" "}
+        方法打造更優雅的個人部落格。在這篇文章中，我分享了如何利用{" "}
+        <code>map()</code> 方法來處理部落格文章列表的動態渲染，並展示了 ChatGPT
+        提供的修改建議和實作過程中的思考。
       </p>
     ),
-    link: 'https://medium.com/@1chooo/%E5%A6%82%E4%BD%95%E9%80%8F%E9%81%8E-map-%E8%AE%93%E4%BD%A0%E7%9A%84-react-typescript-%E5%B0%88%E6%A1%88%E6%9B%B4%E5%8A%A0%E5%84%AA%E9%9B%85-f1e5bdca1710',
-    alt: 'How to Make Your React TypeScript Project More Elegant with `map()`'
+    link: "https://medium.com/@thecodealchemy/",
+    alt: "How to Make Your React TypeScript Project More Elegant with `map()`",
   },
   {
     title: (
@@ -140,16 +139,19 @@ const postsData: Post[] = [
         忘掉 YouTube Premium！這些無廣告瀏覽器讓你愛不釋手！
       </h3>
     ),
-    category: 'Unboxing',
+    category: "Unboxing",
     imageUrl: noAdsImage,
-    date: 'Feb 11, 2024',
+    date: "Feb 11, 2024",
     content: (
       <p className="blog-text">
-        在這個廣告橫行的 YouTube 時代，享受影片卻不被廣告干擾的感覺真是太棒了！透過 Brave 瀏覽器，我終於找到了解脫的方法，而且完全不必花錢購買 Premium。讓我們一起換個方式，享受無廣告的 YouTube 世界吧！
+        在這個廣告橫行的 YouTube
+        時代，享受影片卻不被廣告干擾的感覺真是太棒了！透過 Brave
+        瀏覽器，我終於找到了解脫的方法，而且完全不必花錢購買
+        Premium。讓我們一起換個方式，享受無廣告的 YouTube 世界吧！
       </p>
     ),
-    link: 'https://medium.com/@1chooo/%E5%BF%98%E6%8E%89-youtube-premium-%E9%80%99%E4%BA%9B%E7%84%A1%E5%BB%A3%E5%91%8A%E7%80%8F%E8%A6%BD%E5%99%A8%E8%AE%93%E4%BD%A0%E6%84%9B%E4%B8%8D%E9%87%8B%E6%89%8B-901f7d15a59a',
-    alt: '忘掉 YouTube Premium！這些無廣告瀏覽器讓你愛不釋手！',
+    link: "https://medium.com/@1chooo/%E5%BF%98%E6%8E%89-youtube-premium-%E9%80%99%E4%BA%9B%E7%84%A1%E5%BB%A3%E5%91%8A%E7%80%8F%E8%A6%BD%E5%99%A8%E8%AE%93%E4%BD%A0%E6%84%9B%E4%B8%8D%E9%87%8B%E6%89%8B-901f7d15a59a",
+    alt: "忘掉 YouTube Premium！這些無廣告瀏覽器讓你愛不釋手！",
   },
 ];
 ```
@@ -158,27 +160,16 @@ In this way, we can use `map()` to extract the data from `postsData` and simplif
 
 ```tsx
 <ul className="blog-posts-list">
-  {postsData.map((
-    post: Post,
-    index: number
-  ) => (
+  {postsData.map((post: Post, index: number) => (
     <li
       key={index}
       className={`blog-post-item active`}
       data-filter-item
       data-category={post.category.toLowerCase()}
     >
-      <a
-        href={post.link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={post.link} target="_blank" rel="noopener noreferrer">
         <figure className="blog-banner-box">
-          <img
-            src={post.imageUrl}
-            alt={post.alt}
-            loading="lazy"
-          />
+          <img src={post.imageUrl} alt={post.alt} loading="lazy" />
         </figure>
         <div className="blog-content">
           <div className="blog-meta">

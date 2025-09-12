@@ -1,31 +1,28 @@
-import type { Metadata } from "next"
-import {
-  GoogleAnalytics,
-  GoogleTagManager,
-} from "@next/third-parties/google"
-import { roboto } from "@/app/font"
-import Hello from "@/components/hello"
-import NavBar from "@/components/nav-bar"
-import { ProgressBar } from "@/components/progress-bar"
-import SideBar from "@/components/side-bar"
-import { WebVitals } from "@/components/web-vitals"
-import config from "@/config"
+import type { Metadata } from "next";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { roboto } from "@/app/font";
+import Hello from "@/components/hello";
+import NavBar from "@/components/nav-bar";
+import { ProgressBar } from "@/components/progress-bar";
+import SideBar from "@/components/side-bar";
+import { WebVitals } from "@/components/web-vitals";
+import config from "@/config";
 
-import "@/styles/globals.css"
+import "@/styles/globals.css";
 
 const {
-  title, description,
-  author, keywords,
-  googleAnalyticId, googleTagManagerId,
-  openGraph, about, avatar
-} = config
+  title,
+  description,
+  author,
+  keywords,
+  googleAnalyticId,
+  googleTagManagerId,
+  openGraph,
+  about,
+  avatar,
+} = config;
 
-const {
-  firstName,
-  lastName,
-  middleName,
-  preferredName
-} = about
+const { firstName, lastName, middleName, preferredName } = about;
 
 export const metadata: Metadata = {
   title: title,
@@ -41,37 +38,32 @@ export const metadata: Metadata = {
     description: openGraph.description,
     images: openGraph.images,
   },
-  manifest: '/manifest.webmanifest',
+  manifest: "/manifest.webmanifest",
   twitter: {
     card: "summary_large_image",
-    title: "Hugo ChunHo Lin (1chooo) | Open Source Enthusiast",
-    description:
-      "I'm Chun-Ho (Hugo) Lin, a graduate with a Bachelor's degree from National Central University (NCU) 🐿️, driven by a sincere passion for Software Engineering 💻.",
-    images: "https://docs.1chooo.com/images/cover-with-1chooo-com.png",
+    title: title,
+    description: description,
+    images: openGraph.images,
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: [
       {
-        url: '/logo192.png',
-        sizes: '192x192',
-        type: 'image/png'
-      }
+        url: "/logo192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
     ],
   },
-}
+};
 
-function RootLayout({
-  children,
-}: {
-  readonly children: React.ReactNode;
-}) {
+function RootLayout({ children }: { readonly children: React.ReactNode }) {
   return (
     <html lang="en" className={`${roboto.className}`}>
       <WebVitals gaId={googleAnalyticId} />
       <body>
-        <ProgressBar className="fixed top-0 h-1 bg-yellow-500" >
+        <ProgressBar className="fixed top-0 h-1 bg-yellow-500">
           <Hello />
           <main>
             <SideBar
@@ -91,7 +83,7 @@ function RootLayout({
       <GoogleAnalytics gaId={googleAnalyticId} />
       <GoogleTagManager gtmId={googleTagManagerId} />
     </html>
-  )
+  );
 }
 
-export default RootLayout
+export default RootLayout;
