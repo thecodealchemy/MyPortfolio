@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { unstable_noStore as noStore } from "next/cache";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
 import PageHeader from "@/components/page-header";
-import Comments from "@/components/comments";
+
 import { getBlogPosts } from "@/lib/db/v1/post";
 import config from "@/config";
 import { LuFacebook, LuTwitter } from "react-icons/lu";
@@ -176,12 +176,7 @@ export default async function Post(props: { params: tParams }) {
         </section>
       </article>
 
-      <article style={{ marginTop: "1rem" }}>
-        <section className="blog-text">
-          <PageHeader header="Comments" />
-          <Comments giscusConfig={giscusConfig} />
-        </section>
-      </article>
+      {/* Comments section temporarily disabled */}
     </div>
   );
 }

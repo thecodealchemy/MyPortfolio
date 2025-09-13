@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import Image from "next/image";
-import Balancer from 'react-wrap-balancer'
-import Loading from "@/components/loading";
+import Balancer from "react-wrap-balancer";
 import PageHeader from "@/components/page-header";
 import FilterSelectBox from "@/components/filter/filter-select-box";
 import FilterList from "@/components/filter/filter-list";
@@ -21,9 +20,7 @@ export const metadata = {
 
 type BlogQueryParams = Promise<{ tag?: string; page?: string }>;
 
-async function BlogPosts(
-  { searchParams }: { searchParams: BlogQueryParams }
-) {
+async function BlogPosts({ searchParams }: { searchParams: BlogQueryParams }) {
   const { tag = "All", page = "1" } = await searchParams;
   let allBlogs = await getBlogPosts();
   const blogTags = [
@@ -52,11 +49,7 @@ async function BlogPosts(
 
   return (
     <section className="blog-posts">
-      <FilterList
-        path="post"
-        selectedTag={selectedTag}
-        blogTags={blogTags}
-      />
+      <FilterList path="post" selectedTag={selectedTag} blogTags={blogTags} />
       <FilterSelectBox
         path="post"
         selectedTag={selectedTag}
@@ -124,13 +117,19 @@ async function BlogPosts(
   );
 }
 
-export default function Post(
-  { searchParams }: { searchParams: BlogQueryParams }
-) {
+export default function Post({
+  searchParams,
+}: {
+  searchParams: BlogQueryParams;
+}) {
   return (
     <article>
       <PageHeader header="Hugo's Blog" />
-      <Suspense fallback={<Loading />}>
+      <Suspense
+        fallback={
+          <div className="animate-pulse text-light-gray">Loading posts...</div>
+        }
+      >
         <BlogPosts searchParams={searchParams} />
       </Suspense>
     </article>

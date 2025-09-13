@@ -243,6 +243,19 @@ For collaborations or to request a copy of my resume, contact me at adityaks.tec
         },
       },
       {
+        slug: "Chess Analyzer",
+        metadata: {
+          title: "Chess Analyzer (FastAPI)",
+          publishedAt: "2025-09-01",
+          summary:
+            "Developed a chess analyzer using Python and the chess.com API to analyze chess games and provide insights into the game's performance.",
+          category: "Python",
+          banner: "/images/portfolio/chess-analysis.png",
+          alt: "Chess Engines project",
+          link: "https://chessengines.netlify.app",
+        }
+      },
+      {
         slug: "instagram-automation",
         metadata: {
           title: "Instagram Automation (Python)",

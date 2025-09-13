@@ -1,6 +1,6 @@
-import Link from "next/link"
+import Link from "next/link";
 import { cn } from "@/lib/utils";
-import NumberTicker from "@/registry/default/magicui/number-ticker";
+import { NumberTicker } from "@/components/magicui/number-ticker";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { StarIcon } from "@heroicons/react/24/solid";
@@ -17,14 +17,14 @@ async function StarOnGitHub() {
       {
         headers: process.env.GITHUB_OAUTH_TOKEN
           ? {
-            Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-            "Content-Type": "application/json",
-          }
+              Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+              "Content-Type": "application/json",
+            }
           : {},
         next: {
           revalidate: 3600,
         },
-      },
+      }
     );
 
     if (response.ok) {
@@ -41,7 +41,7 @@ async function StarOnGitHub() {
         buttonVariants({
           variant: "rainbow",
         }),
-        "hidden md:inline-flex",
+        "hidden md:inline-flex"
       )}
       target="_blank"
       href={"https://github.com/1chooo/1chooo.com"}
