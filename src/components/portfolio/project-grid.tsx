@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { LuExternalLink } from "react-icons/lu";
 import { ProgressBarLink } from "@/components/progress-bar";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
@@ -23,8 +24,65 @@ type Project = {
 
 export default function ProjectGrid({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<Project | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const panelRef = useRef<HTMLDivElement | null>(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.9,
+      filter: "blur(10px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.25, 0.25, 0.75],
+      },
+    },
+  };
+
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
 
   useEffect(() => {
     if (active && panelRef.current) {
@@ -33,19 +91,46 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
   }, [active]);
 
   return (
-    <div>
+    <div ref={ref}>
       {projects.length === 0 ? (
-        <p className="pg-no-projects">No projects to display.</p>
+        <motion.p
+          className="pg-no-projects"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          No projects to display.
+        </motion.p>
       ) : (
-        <ul className="pg-project-list" data-count={projects.length}>
-          {projects.map((p) => (
-            <li
+        <motion.ul
+          className="pg-project-list"
+          data-count={projects.length}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {projects.map((p, index) => (
+            <motion.li
               key={p.slug}
               className="pg-project-item"
+              variants={itemVariants}
               onClick={() => setActive(p)}
               tabIndex={0}
+              whileHover={{
+                scale: 1.02,
+                y: -5,
+                transition: { duration: 0.2 },
+              }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                cursor: "pointer",
+              }}
             >
-              <figure className="pg-project-img">
+              <motion.figure
+                className="pg-project-img"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
                 {p.metadata.banner ? (
                   <Image
                     src={p.metadata.banner}
@@ -57,62 +142,112 @@ export default function ProjectGrid({ projects }: { projects: Project[] }) {
                 ) : (
                   <div className="pg-project-placeholder" />
                 )}
-              </figure>
-              <h3 className="pg-project-title">{p.metadata.title}</h3>
+              </motion.figure>
+              <motion.h3
+                className="pg-project-title"
+                whileHover={{
+                  color: "#ffdb4d",
+                  transition: { duration: 0.2 },
+                }}
+              >
+                {p.metadata.title}
+              </motion.h3>
               <p className="pg-project-category">{p.metadata.category}</p>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       )}
 
-      {active &&
-        typeof document !== "undefined" &&
-        createPortal(
-          <div
+      <AnimatePresence>
+        {active && typeof document !== "undefined" && (
+          <motion.div
             className={`project-modal open`}
             aria-hidden={active ? "false" : "true"}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <div
+            <motion.div
               className="project-modal-backdrop"
               onClick={() => setActive(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             />
-            <div
+            <motion.div
               className="project-modal-panel"
               ref={panelRef}
               tabIndex={-1}
               role="dialog"
               aria-modal="true"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
             >
-              <button
+              <motion.button
                 className="project-modal-close"
                 onClick={() => setActive(null)}
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
               >
                 ✕
-              </button>
-              <h2>{active.metadata.title}</h2>
-              <p className="muted">{active.metadata.publishedAt}</p>
-              <div className="project-summary">
+              </motion.button>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+              >
+                {active.metadata.title}
+              </motion.h2>
+              <motion.p
+                className="muted"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.3 }}
+              >
+                {active.metadata.publishedAt}
+              </motion.p>
+              <motion.div
+                className="project-summary"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.3 }}
+              >
                 <MarkdownRenderer content={active.metadata.summary || ""} />
-              </div>
-              <div className="project-actions">
+              </motion.div>
+              <motion.div
+                className="project-actions"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25, duration: 0.3 }}
+              >
                 {active.metadata.link && (
-                  <a
+                  <motion.a
                     href={active.metadata.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Visit <LuExternalLink className="inline-icon" />
-                  </a>
+                  </motion.a>
                 )}
-                <button className="btn" onClick={() => setActive(null)}>
+                <motion.button
+                  className="btn"
+                  onClick={() => setActive(null)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Close
-                </button>
-              </div>
-            </div>
-          </div>,
-          document.body
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         )}
+      </AnimatePresence>
     </div>
   );
 }

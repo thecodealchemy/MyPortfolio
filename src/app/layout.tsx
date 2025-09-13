@@ -6,6 +6,7 @@ import NavBar from "@/components/nav-bar";
 import { ProgressBar } from "@/components/progress-bar";
 import SideBar from "@/components/side-bar";
 import { WebVitals } from "@/components/web-vitals";
+import { FloatingElements } from "@/components/parallax";
 import config from "@/config";
 
 import "@/styles/globals.css";
@@ -63,6 +64,7 @@ function RootLayout({ children }: { readonly children: React.ReactNode }) {
     <html lang="en" className={`${roboto.className}`}>
       <WebVitals gaId={googleAnalyticId} />
       <body>
+        <FloatingElements />
         <ProgressBar className="fixed top-0 h-1 bg-yellow-500">
           <Hello />
           <main>

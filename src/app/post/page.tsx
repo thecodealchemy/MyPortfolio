@@ -1,7 +1,10 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import PageHeader from "@/components/page-header";
+import EnhancedLoading from "@/components/enhanced-loading";
 import FilterSelectBox from "@/components/filter/filter-select-box";
 import FilterList from "@/components/filter/filter-list";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
@@ -23,6 +26,9 @@ type BlogQueryParams = Promise<{ tag?: string; page?: string }>;
 async function BlogPosts({ searchParams }: { searchParams: BlogQueryParams }) {
   const { tag = "All", page = "1" } = await searchParams;
   let allBlogs = await getBlogPosts();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const blogTags = [
     "All",
     ...Array.from(
@@ -47,26 +53,70 @@ async function BlogPosts({ searchParams }: { searchParams: BlogQueryParams }) {
     currentPage * POSTS_PER_PAGE
   );
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      scale: 0.95,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="blog-posts">
+    <section className="blog-posts" ref={ref}>
       <FilterList path="post" selectedTag={selectedTag} blogTags={blogTags} />
       <FilterSelectBox
         path="post"
         selectedTag={selectedTag}
         blogTags={blogTags}
       />
-      <ul className="blog-posts-list">
-        {paginatedBlogs.map((post) => (
-          <li
+      <motion.ul
+        className="blog-posts-list"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        {paginatedBlogs.map((post, index) => (
+          <motion.li
             key={post.slug}
             className="blog-post-item active"
             data-category={post.metadata.category}
+            variants={itemVariants}
+            whileHover={{
+              scale: 1.02,
+              y: -8,
+              transition: { duration: 0.2 },
+            }}
+            whileTap={{ scale: 0.98 }}
           >
             <ProgressBarLink
               href={`/post/${post.slug}`}
               rel="noopener noreferrer"
             >
-              <figure className="blog-banner-box">
+              <motion.figure
+                className="blog-banner-box"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Image
                   src={post.metadata.banner}
                   alt={post.metadata.alt || "Blog post image"}
@@ -77,9 +127,13 @@ async function BlogPosts({ searchParams }: { searchParams: BlogQueryParams }) {
                   loading="eager"
                   blurDataURL="https://docs.1chooo.com/images/cover-with-1chooo-com.png"
                 />
-              </figure>
+              </motion.figure>
               <div className="blog-content">
-                <div className="blog-meta">
+                <motion.div
+                  className="blog-meta"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <p className="blog-category">{post.metadata.category}</p>
                   <span className="dot"></span>
                   <time dateTime={post.metadata.publishedAt}>
@@ -92,27 +146,39 @@ async function BlogPosts({ searchParams }: { searchParams: BlogQueryParams }) {
                       }
                     )}
                   </time>
-                </div>
-                <h3 className="text-2xl text-white-2 font-semibold leading-[1.3] transition-all hover:text-orange-yellow-crayola">
+                </motion.div>
+                <motion.h3
+                  className="text-2xl text-white-2 font-semibold leading-[1.3] transition-all hover:text-orange-yellow-crayola"
+                  whileHover={{
+                    x: 5,
+                    transition: { duration: 0.2 },
+                  }}
+                >
                   <Balancer>
                     <MarkdownRenderer content={post.metadata.title} />
                   </Balancer>
-                </h3>
+                </motion.h3>
                 <MarkdownRenderer
                   className="text-light-gray text-s font-light leading-6 overflow-hidden line-clamp-2"
                   content={post.metadata.summary}
                 />
               </div>
             </ProgressBarLink>
-          </li>
+          </motion.li>
         ))}
-      </ul>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        selectedTag={selectedTag}
-        basePath="/post"
-      />
+      </motion.ul>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.3 }}
+      >
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          selectedTag={selectedTag}
+          basePath="/post"
+        />
+      </motion.div>
     </section>
   );
 }
@@ -126,9 +192,7 @@ export default function Post({
     <article>
       <PageHeader header="Hugo's Blog" />
       <Suspense
-        fallback={
-          <div className="animate-pulse text-light-gray">Loading posts...</div>
-        }
+        fallback={<EnhancedLoading type="skeleton" text="Loading posts..." />}
       >
         <BlogPosts searchParams={searchParams} />
       </Suspense>

@@ -8,7 +8,7 @@
 
 :root {
   /**
-  * colors
+  * colors - Enhanced for better accessibility
   */
 
   --color-1: 0 100% 63%;
@@ -17,7 +17,7 @@
   --color-4: 195 100% 63%;
   --color-5: 90 100% 63%;
 
-  /* gradient */
+  /* gradient - Enhanced with more depth */
 
   --bg-gradient-onyx: linear-gradient(to bottom right,
       hsl(240, 1%, 25%) 3%,
@@ -39,8 +39,20 @@
   --text-gradient-yellow: linear-gradient(to right,
       hsl(45, 100%, 72%),
       hsl(35, 100%, 68%));
+  
+  /* New gradient overlays for depth */
+  --gradient-overlay-1: linear-gradient(135deg, 
+      hsla(45, 100%, 72%, 0.1) 0%, 
+      hsla(240, 2%, 13%, 0.8) 100%);
+  --gradient-overlay-2: radial-gradient(circle at top right, 
+      hsla(45, 100%, 72%, 0.15) 0%, 
+      transparent 50%);
+  --gradient-overlay-3: linear-gradient(45deg, 
+      hsla(270, 100%, 63%, 0.1) 0%, 
+      hsla(210, 100%, 63%, 0.1) 50%, 
+      transparent 100%);
 
-  /* solid */
+  /* solid - Enhanced contrast */
 
   --jet: hsl(0, 0%, 22%);
   --onyx: hsl(240, 1%, 17%);
@@ -50,10 +62,23 @@
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
   --orange-yellow-crayola: hsl(45, 100%, 72%);
+  --orange-yellow-crayola-dark: hsl(45, 100%, 65%); /* New darker variant */
   --vegas-gold: hsl(45, 54%, 58%);
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
+  
+  /* Enhanced dark mode colors */
+  --dark-surface: hsl(240, 2%, 8%);
+  --dark-surface-variant: hsl(240, 2%, 15%);
+  --dark-border: hsl(240, 2%, 25%);
+  --dark-text-primary: hsl(0, 0%, 95%);
+  --dark-text-secondary: hsl(0, 0%, 78%);
+  
+  /* Glow effects */
+  --glow-primary: 0 0 20px hsla(45, 100%, 72%, 0.3);
+  --glow-secondary: 0 0 15px hsla(45, 100%, 72%, 0.2);
+  --glow-accent: 0 0 30px hsla(45, 100%, 72%, 0.4);
 
   /**
   * typography
@@ -165,6 +190,53 @@ article {
   padding: 15px;
   box-shadow: var(--shadow-1);
   z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhanced card with gradient overlay */
+.sidebar::before,
+article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-overlay-1);
+  opacity: 0.5;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover::before,
+article:hover::before {
+  opacity: 0.7;
+}
+
+/* Glow effect for interactive elements */
+.sidebar:hover,
+article:hover {
+  box-shadow: var(--shadow-1), var(--glow-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced gradient overlays for depth */
+.sidebar::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-overlay-2);
+  opacity: 0.3;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover::after {
+  opacity: 0.5;
 }
 
 .separator {
@@ -249,6 +321,7 @@ article {
   width: 20px;
 }
 
+/* Enhanced glow effects for interactive elements */
 .content-card {
   position: relative;
   background: var(--border-gradient-onyx);
@@ -258,6 +331,12 @@ article {
   box-shadow: var(--shadow-2);
   cursor: pointer;
   z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.content-card:hover {
+  box-shadow: var(--shadow-2), var(--glow-secondary);
+  transform: translateY(-2px);
 }
 
 .content-card::before {
@@ -267,6 +346,99 @@ article {
   background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
+}
+
+/* Glow effects for buttons */
+button:hover,
+.btn:hover {
+  box-shadow: var(--glow-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced glow for primary buttons */
+.btn-primary:hover {
+  box-shadow: var(--glow-accent);
+  transform: translateY(-1px);
+}
+
+/* Glow effects for links and interactive text */
+a:hover,
+.hover-glow:hover {
+  text-shadow: var(--glow-primary);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced project and blog item hover effects */
+.project-item:hover,
+.blog-post-item:hover {
+  box-shadow: var(--shadow-3), var(--glow-secondary);
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced form inputs with glow */
+.form-input:focus {
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: var(--glow-secondary);
+  outline: none;
+}
+
+/* Navigation items with subtle glow */
+.nav-item:hover {
+  color: var(--orange-yellow-crayola);
+  text-shadow: var(--glow-primary);
+  transition: all 0.3s ease;
+}
+
+/* Enhanced timeline items */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -33px;
+  height: 6px;
+  width: 6px;
+  background: var(--text-gradient-yellow);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--jet), var(--glow-primary);
+}
+
+/* Subtle animation for enhanced visual feedback */
+@keyframes subtle-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-1);
+  }
+  50% {
+    box-shadow: var(--shadow-1), var(--glow-secondary);
+  }
+}
+
+.animate-glow {
+  animation: subtle-glow 2s ease-in-out infinite;
+}
+
+/* Enhanced filter buttons */
+.filter-btn:hover {
+  background: var(--orange-yellow-crayola-dark);
+  color: var(--smoky-black);
+  box-shadow: var(--glow-secondary);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  box-shadow: var(--glow-accent);
+}
+
+/* Enhanced pagination buttons */
+.pagination-btn:hover {
+  background: var(--orange-yellow-crayola-dark);
+  color: var(--smoky-black);
+  box-shadow: var(--glow-secondary);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 /*-----------------------------------*\
